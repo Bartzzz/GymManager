@@ -8,9 +8,13 @@ namespace GymManager.Core.Entities
     {
         [Key]
         public int Id { get; set; }
-        public bool IsActive { get; set; }
+        //[Required]
+        //public bool IsActive { get; set; }
+        [Required]
         public SubscriptionType SubscriptionType { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public int EntrncesLeft { get; set; }
 
         public int UserId { get; set; }

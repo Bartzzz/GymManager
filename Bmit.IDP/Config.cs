@@ -15,9 +15,17 @@ namespace Bmit.IDP
                 new IdentityResources.OpenId()
             };
 
+        public static IEnumerable<ApiResource> Apis =>
+          new ApiResource[]
+          {
+                new ApiResource(
+                    "gymmanagerapi",
+                    "Gym Manager API",
+                    new List<string>() { "role" })
+          };
         public static IEnumerable<ApiScope> ApiScopes =>
             new ApiScope[]
-            { };
+            {new ApiScope("name") };
 
         public static IEnumerable<Client> Clients =>
             new Client[] 

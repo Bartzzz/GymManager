@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace GymManager.Core.Entities
 {
     public abstract class User
@@ -19,8 +15,5 @@ namespace GymManager.Core.Entities
         [Required]
         [MaxLength(100)]
         public string Email { get; set; }
-        [Required]
-        [MaxLength(100)]
-        public string Password { get; set; }
     }
 }

@@ -48,7 +48,7 @@ namespace Bmit.IDP
 
             // uncomment if you want to add MVC
             app.UseStaticFiles();
-            //app.UseRouting();
+            app.UseRouting();
 
             app.UseIdentityServer();
 

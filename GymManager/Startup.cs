@@ -1,5 +1,7 @@
+using GymManager.Core.Services;
 using GymManager.Data;
 using GymManager.Data.Repositories;
+using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,18 +31,25 @@ namespace GymManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContextPool<UserDbContext>(options =>
-            //{
-            //    options.UseSqlServer(Configuration.GetConnectionString("GymManagerDb"));
-            //});
+
+            services.AddDbContextPool<AppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("GymManagerDB"));
+            });
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
-            services.AddDbContext<UserDbContext>(options =>
-            {
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("GymManagerDb"));
-            });
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:44365/";
+                    options.ApiName = "gymmanagerapi";
+                });
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -61,6 +70,8 @@ namespace GymManager
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

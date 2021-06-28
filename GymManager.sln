@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManager.Data", "GymManag
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GymManager.Core", "GymManager.Core\GymManager.Core.csproj", "{56A3B15A-0E6E-46D6-A3A6-E98CE0243691}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bmit.IDP", "Bmit.IDP\Bmit.IDP.csproj", "{3FE9A683-C1C1-4E18-9E94-E229494250F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bmit.IDP", "Bmit.IDP\Bmit.IDP.csproj", "{4B6FE729-951E-46A5-AA54-84550659DED8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{56A3B15A-0E6E-46D6-A3A6-E98CE0243691}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56A3B15A-0E6E-46D6-A3A6-E98CE0243691}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56A3B15A-0E6E-46D6-A3A6-E98CE0243691}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FE9A683-C1C1-4E18-9E94-E229494250F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FE9A683-C1C1-4E18-9E94-E229494250F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FE9A683-C1C1-4E18-9E94-E229494250F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FE9A683-C1C1-4E18-9E94-E229494250F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B6FE729-951E-46A5-AA54-84550659DED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B6FE729-951E-46A5-AA54-84550659DED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B6FE729-951E-46A5-AA54-84550659DED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B6FE729-951E-46A5-AA54-84550659DED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
