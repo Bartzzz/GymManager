@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GymManager.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210627231024_AddUsers")]
-    partial class AddUsers
+    [Migration("20210628233430_Migration4")]
+    partial class Migration4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,12 +33,10 @@ namespace GymManager.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<DateTime>("LastEntrance")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
@@ -53,6 +51,36 @@ namespace GymManager.Data.Migrations
                     b.ToTable("Clients");
                 });
 
+            modelBuilder.Entity("GymManager.Core.Entities.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int>("EpmployeeType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Surname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("GymManager.Core.Entities.Subscription", b =>
                 {
                     b.Property<int>("Id")
@@ -60,11 +88,8 @@ namespace GymManager.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("EntrncesLeft")
+                    b.Property<int>("EntrancesLeft")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
@@ -77,17 +102,16 @@ namespace GymManager.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
+                    b.HasIndex("UserId");
 
-                    b.ToTable("Subscription");
+                    b.ToTable("Subscriptions");
                 });
 
             modelBuilder.Entity("GymManager.Core.Entities.Subscription", b =>
                 {
                     b.HasOne("GymManager.Core.Entities.Client", "User")
-                        .WithOne("Subscription")
-                        .HasForeignKey("GymManager.Core.Entities.Subscription", "UserId")
+                        .WithMany("Subscriptions")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -96,7 +120,7 @@ namespace GymManager.Data.Migrations
 
             modelBuilder.Entity("GymManager.Core.Entities.Client", b =>
                 {
-                    b.Navigation("Subscription");
+                    b.Navigation("Subscriptions");
                 });
 #pragma warning restore 612, 618
         }

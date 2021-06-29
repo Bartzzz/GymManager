@@ -8,21 +8,24 @@ using System.Text;
 
 namespace GymManager.Data
 {
-    public class UserDbContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Client> Clients { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
 
-        public UserDbContext(DbContextOptions<UserDbContext> options)
+        public AppDbContext(DbContextOptions<AppDbContext> options)
             : base(options)
         { 
+
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Subscription>()
                 .HasOne(p => p.User)
-                .WithOne(b => b.Subscription)
-                .HasForeignKey<Subscription>(p => p.UserId);
+                .WithMany(b => b.Subscriptions)
+                .HasForeignKey(p => p.UserId);
 
             base.OnModelCreating(modelBuilder);
         }

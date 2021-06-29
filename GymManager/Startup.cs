@@ -1,21 +1,16 @@
-using GymManager.Core.Services;
+using System;
+using GymManager.Core.Services.SubscriptionService;
+using GymManager.Core.Services.UserService;
 using GymManager.Data;
 using GymManager.Data.Repositories;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GymManager
 {
@@ -31,7 +26,6 @@ namespace GymManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddDbContextPool<AppDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("GymManagerDB"));
@@ -40,7 +34,7 @@ namespace GymManager
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
 
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserRepository, ClientRepository>();
             services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
@@ -55,6 +49,8 @@ namespace GymManager
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "GymManager", Version = "v1" });
             });
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,6 +1,5 @@
 using GymManager.Data;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -18,9 +17,9 @@ namespace GymManager
             {
                 try
                 {
-                    var context = scope.ServiceProvider.GetService<UserDbContext>();
-                    context.Database.EnsureDeleted(); //dev mode only
-                    context.Database.Migrate();
+                    var context = scope.ServiceProvider.GetService<AppDbContext>();
+                    //context.Database.EnsureDeleted(); //dev mode only
+                    //context.Database.Migrate();
                 }
                 catch (Exception ex)
                 {
@@ -30,7 +29,6 @@ namespace GymManager
             }
 
             host.Run();
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

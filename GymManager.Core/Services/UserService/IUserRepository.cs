@@ -1,9 +1,7 @@
 ﻿using GymManager.Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using GymManager.Data.Repositories;
 
-namespace GymManager.Data.Repositories
+namespace GymManager.Core.Services.UserService
 {
     public interface IUserRepository: IBaseRepository<Client>
     {
