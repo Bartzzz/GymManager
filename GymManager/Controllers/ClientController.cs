@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GymManager.Core.DTOs.Users;
+﻿using GymManager.Core.DTOs.Users;
 using GymManager.Core.Services.UserService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManager.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class ClientController : Controller
     {
@@ -32,7 +31,7 @@ namespace GymManager.Controllers
             return Ok(users);
         }
 
-
+        
         [HttpGet("getClient")]
         public IActionResult GetClient(int userId)
         {
@@ -45,7 +44,8 @@ namespace GymManager.Controllers
 
             return Ok(client);
         }
-        [HttpPost("addClient")]
+
+       [HttpPost("addClient")]
         public IActionResult Addclient(ClientDto client)
         {
             var addedClient = _userService.AddClient(client);
@@ -71,6 +71,7 @@ namespace GymManager.Controllers
             return Ok(updatedClient);
         }
 
+   
         [HttpDelete("removeClient")]
         public IActionResult RemoveClient(int clientId)
         {
@@ -82,6 +83,19 @@ namespace GymManager.Controllers
             }
 
             return Ok(removedClient);
+        }
+
+        [HttpPut("verifyEntrance")]
+        public IActionResult VerifyEntrance(int clientId)
+        {
+            var enteringClient = _userService.VerifyEntrance(clientId);
+
+            if (enteringClient == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(enteringClient);
         }
     }
 }

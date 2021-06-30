@@ -1,11 +1,13 @@
-﻿using GymManager.Core.DTOs;
-using GymManager.Core.DTOs.Subscriptions;
+﻿using GymManager.Core.DTOs.Subscriptions;
 using GymManager.Core.Services.SubscriptionService;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GymManager.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class SubscriptionController : Controller
     {

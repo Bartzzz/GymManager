@@ -38,10 +38,8 @@ namespace GymManager.Core.Services.SubscriptionService
                 return null;
             }
 
-            var activeSubscription = userSubscriptions.OrderByDescending(x => x.StartDate).First();
-            var sub = _mapper.Map<ActiveSubscriptionDto>(activeSubscription);
-            sub.IsActive = ValidateSubscription(activeSubscription);
-            return sub;
+            var activeSubscription = ValidateSubscription((_mapper.Map<IEnumerable<SubscriptionDto>>(userSubscriptions)));
+            return activeSubscription;
         }
 
         public SubscriptionDto AddSubscription(SubscriptionDto subscription)
@@ -65,9 +63,18 @@ namespace GymManager.Core.Services.SubscriptionService
             return updatedSubscription != null ? _mapper.Map<SubscriptionDto>(updatedSubscription) : null;
         }
 
-        private bool ValidateSubscription(Subscription activeSubscription)
+        public ActiveSubscriptionDto ValidateSubscription(IEnumerable<SubscriptionDto> userSubscriptions)
         {
-            return (activeSubscription.StartDate > DateTime.Now.AddMonths(-1) && (activeSubscription.SubscriptionType == SubscriptionType.Monthly || activeSubscription.EntrancesLeft > 0));
+           var subscription = userSubscriptions.OrderByDescending(x => x.StartDate).First();
+           var activeSubscription = _mapper.Map<ActiveSubscriptionDto>(subscription);
+
+            if(activeSubscription.StartDate > DateTime.Now.AddMonths(-1) && (activeSubscription.SubscriptionType == SubscriptionType.Monthly || activeSubscription.EntrancesLeft > 0))
+            {
+                activeSubscription.IsActive = true;
+            }
+
+            return activeSubscription;
+
         }
     }
 }

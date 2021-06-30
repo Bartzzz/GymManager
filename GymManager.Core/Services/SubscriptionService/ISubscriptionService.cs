@@ -12,5 +12,6 @@ namespace GymManager.Core.Services.SubscriptionService
         SubscriptionDto AddSubscription(SubscriptionDto subscription);
         SubscriptionDto UpdateSubscription(SubscriptionDto subscription);
         SubscriptionDto RemoveSubscription(int subscriptionId);
+        ActiveSubscriptionDto ValidateSubscription(IEnumerable<SubscriptionDto> subscriptions);
     }
 }

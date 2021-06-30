@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace GymManager.Core.DTOs.Users
+﻿namespace GymManager.Core.DTOs.Users
 {
     public class UserDto
     {

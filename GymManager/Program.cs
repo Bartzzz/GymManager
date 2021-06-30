@@ -13,13 +13,16 @@ namespace GymManager
         {
             var host = CreateHostBuilder(args).Build();
 
+            
+
             using (var scope = host.Services.CreateScope())
             {
                 try
                 {
                     var context = scope.ServiceProvider.GetService<AppDbContext>();
-                    //context.Database.EnsureDeleted(); //dev mode only
-                    //context.Database.Migrate();
+
+                    context.Database.EnsureDeleted(); //dev mode only
+                    RunSeeding(host);
                 }
                 catch (Exception ex)
                 {
@@ -29,6 +32,17 @@ namespace GymManager
             }
 
             host.Run();
+        }
+
+        private static void RunSeeding(IHost host)
+        {
+            var scopeFactory = host.Services.GetService<IServiceScopeFactory>();
+
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var seeder = scope.ServiceProvider.GetService<AppSeeder>();
+                seeder?.SeedAsync().Wait();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

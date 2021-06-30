@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-using GymManager.Core.DTOs.Users;
-using GymManager.Core.Entities;
+﻿using GymManager.Core.DTOs.Users;
+using System.Collections.Generic;
 
 namespace GymManager.Core.Services.UserService
 {
@@ -11,5 +10,6 @@ namespace GymManager.Core.Services.UserService
         ClientDto AddClient(ClientDto client);
         ClientDto UpdateClient(ClientDto client);
         ClientDto RemoveClient(int clientId);
+        ClientDto VerifyEntrance(int clientId);
     }
 }

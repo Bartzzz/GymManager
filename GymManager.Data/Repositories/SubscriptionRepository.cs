@@ -46,7 +46,7 @@ namespace GymManager.Data.Repositories
 
         public Subscription Update(Subscription updatedSubscription)
         {
-            _context.Update(updatedSubscription);
+            _context.Subscriptions.Update(updatedSubscription);
 
             return Commit(updatedSubscription);
         }

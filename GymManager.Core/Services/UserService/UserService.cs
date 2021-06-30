@@ -1,9 +1,11 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using GymManager.Core.DTOs.Users;
 using GymManager.Core.Entities;
 using GymManager.Core.Services.SubscriptionService;
 using System.Collections.Generic;
-using GymManager.Core.DTOs.Subscriptions;
+using System.Linq;
+using GymManager.Core.Enums;
 
 namespace GymManager.Core.Services.UserService
 {
@@ -21,26 +23,26 @@ namespace GymManager.Core.Services.UserService
         }
         public IEnumerable<ClientDto> GetClients()
         {
-           var clients =  _userRepository.GetEntities();
-           var clientDtos = clients != null ? _mapper.Map<IEnumerable<ClientDto>>(clients) : null;
+            var clients = _userRepository.GetEntities();
+            var clientDtos = clients != null ? _mapper.Map<IEnumerable<ClientDto>>(clients) : null;
 
-           if (clientDtos == null)
-           {
-               return null;
-           }
+            if (clientDtos == null)
+            {
+                return null;
+            }
 
-           foreach (var userDto in clientDtos)
-           {
-               userDto.Subscriptions = _subscriptionService.GetSubscriptions(userDto.Id);
-           }
+            foreach (var userDto in clientDtos)
+            {
+                userDto.Subscriptions = _subscriptionService.GetSubscriptions(userDto.Id);
+            }
 
-           return clientDtos;
+            return clientDtos;
         }
 
         public ClientDto GetClient(int userId)
         {
             var client = _userRepository.GetById(userId);
-            var clientDto  = client != null ? _mapper.Map<ClientDto>(client) : null;
+            var clientDto = client != null ? _mapper.Map<ClientDto>(client) : null;
 
             if (clientDto == null)
             {
@@ -71,6 +73,26 @@ namespace GymManager.Core.Services.UserService
             var removedClient = _userRepository.Delete(clientId);
 
             return removedClient != null ? _mapper.Map<ClientDto>(removedClient) : null;
+        }
+
+        public ClientDto VerifyEntrance(int clientId)
+        {
+            var client = GetClient(clientId);
+            var subscription = _subscriptionService.ValidateSubscription(client.Subscriptions);
+            if (subscription.IsActive)
+            {
+                client.LastEntrance = DateTime.Now;
+                if (subscription.SubscriptionType == SubscriptionType.CountedEntrances)
+                {
+                    client.Subscriptions.First(x => x.Id == subscription.Id).EntrancesLeft--;
+                }
+
+                UpdateClient(client);
+                return client;
+            }
+
+            return null;
+
         }
     }
 }

@@ -1,17 +1,12 @@
 ﻿using GymManager.Core.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace GymManager.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<Employee>
     {
         public DbSet<Client> Clients { get; set; }
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Subscription> Subscriptions { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options)

@@ -9,6 +9,7 @@ namespace GymManager.Core.Profiles
         {
             CreateMap<Entities.Subscription, SubscriptionDto>().ReverseMap();
             CreateMap<Entities.Subscription, ActiveSubscriptionDto>().ReverseMap();
+            CreateMap<SubscriptionDto, ActiveSubscriptionDto>().ReverseMap();
         }
     }
 }

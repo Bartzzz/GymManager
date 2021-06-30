@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GymManager.Core.DTOs.Subscriptions.ActiveSubscriptionDto" Collapsed="true">
+    <Position X="6.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\Subscriptions\ActiveSubscriptionDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.DTOs.Subscriptions.SubscriptionDto" Collapsed="true">
+    <Position X="6.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAEgAAAA=</HashCode>
+      <FileName>DTOs\Subscriptions\SubscriptionDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.DTOs.Users.ClientDto" Collapsed="true">
+    <Position X="3.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>DTOs\Users\ClientDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.DTOs.Users.EmployeeDto" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\Users\EmployeeDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.DTOs.Users.UserDto" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DTOs\Users\UserDto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Entities.Client" Collapsed="true">
+    <Position X="0.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Entities\Users\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Entities.Employee" Collapsed="true">
+    <Position X="10.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Users\Employee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Entities.User" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAACAAAAAAAAAAAAQABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Users\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Entities.Subscription" Collapsed="true">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADAAAAAAAAAAAAAAAAAAgAAAAgAAAAAAAAAEgAAAA=</HashCode>
+      <FileName>Entities\Subscription.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Profiles.ClientProfile" Collapsed="true">
+    <Position X="9" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Profiles\ClientProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Profiles.SubscriptionProfile" Collapsed="true">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Profiles\SubscriptionProfile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GymManager.Core.Services.SubscriptionService.SubscriptionService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAACAEAgQBAABAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Services\SubscriptionService\SubscriptionService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="GymManager.Core.Services.UserService.UserService" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAABBBAAAAAAAAAAABAACgABAAAQ=</HashCode>
+      <FileName>Services\UserService\UserService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="GymManager.Data.Repositories.IBaseRepository&lt;T&gt;" Collapsed="true">
+    <Position X="1.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Services\Base\IBaseRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GymManager.Core.Services.SubscriptionService.ISubscriptionRepository" Collapsed="true">
+    <Position X="2.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\SubscriptionService\ISubscriptionRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GymManager.Core.Services.SubscriptionService.ISubscriptionService" Collapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAACAEAgABAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Services\SubscriptionService\ISubscriptionService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GymManager.Core.Services.UserService.IUserRepository" Collapsed="true">
+    <Position X="0.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\UserService\IUserRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="GymManager.Core.Services.UserService.IUserService" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAABAACgABAAAQ=</HashCode>
+      <FileName>Services\UserService\IUserService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="GymManager.Core.Enums.EmployeeType" Collapsed="true">
+    <Position X="9" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAIAAAAACABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\EmployeeType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GymManager.Core.Enums.SubscriptionType" Collapsed="true">
+    <Position X="10.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAgAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Enums\SubscriptionType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

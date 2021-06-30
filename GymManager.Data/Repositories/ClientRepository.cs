@@ -45,7 +45,7 @@ namespace GymManager.Data.Repositories
 
         public Client Update(Client client)
         {
-            _context.Update(client);
+            _context.Clients.Update(client);
 
             return Commit(client);
         }
